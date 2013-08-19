@@ -46,7 +46,7 @@ module Stingray
       actions={}
       response=Map.new(JSON.parse(r))
       if response.respond_to?(:children)
-        response.children.map{|k| actions[k.values.first]=k.values.last} unless error
+        response.children.map{|k| actions[k.values.first]=k.values.last}
         actions
       else 
         response
