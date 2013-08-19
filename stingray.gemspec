@@ -5,44 +5,57 @@
 
 Gem::Specification.new do |s|
   s.name = "stingray"
-  s.version = "0.0.1"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sam Marx"]
-  s.date = "2013-03-14"
-  s.description = "Riverbed Stingray gem"
+  s.date = "2013-08-19"
+  s.description = "Stingray gem for interfacing with the Riverbed Stingray loadbalancers."
   s.email = "smarx@moxiesoft.com"
   s.extra_rdoc_files = [
-    "LICENSE.txt",
     "README.rdoc"
   ]
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "lib/stingray.rb",
+    "lib/stingray/config.rb",
+    "lib/stingray/extra.rb",
+    "lib/stingray/monitors.rb",
+    "lib/stingray/pools.rb",
+    "lib/stingray/rules.rb",
+    "lib/stingray/service_interface.rb",
+    "lib/stingray/vservers.rb",
+    "stingray.gemspec",
     "test/helper.rb",
     "test/test_stingray.rb"
   ]
-  s.files += Dir['lib/**/*.rb']
   s.homepage = "http://github.com/sammarx/stingray"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "riverbed stingray gem"
+  s.rubygems_version = "1.8.15"
+  s.summary = "Stingray gem for interfacing with the Riverbed Stingray loadbalancers."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<rest-client>, [">= 0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<map>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
     else
+      s.add_dependency(%q<rest-client>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<map>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.1.0"])
@@ -50,6 +63,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<simplecov>, [">= 0"])
     end
   else
+    s.add_dependency(%q<rest-client>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<map>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.1.0"])
@@ -57,5 +73,4 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov>, [">= 0"])
   end
 end
-s.add_dependency "map"
-s.add_dependency "rest_client"
+
