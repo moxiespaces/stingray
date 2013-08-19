@@ -18,12 +18,12 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
-    "Gemfile.lock",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "lib/stingray.rb",
     "lib/stingray/config.rb",
+    "lib/stingray/error.rb",
     "lib/stingray/extra.rb",
     "lib/stingray/monitors.rb",
     "lib/stingray/pools.rb",
@@ -32,7 +32,9 @@ Gem::Specification.new do |s|
     "lib/stingray/vservers.rb",
     "stingray.gemspec",
     "test/helper.rb",
-    "test/test_stingray.rb"
+    "test/pool_test.rb",
+    "test/service_interface_test.rb",
+    "test/stingray_test.rb"
   ]
   s.homepage = "http://github.com/sammarx/stingray"
   s.licenses = ["MIT"]
@@ -49,18 +51,18 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<map>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
     else
       s.add_dependency(%q<rest-client>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<map>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
-      s.add_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
     end
   else
     s.add_dependency(%q<rest-client>, [">= 0"])
@@ -68,9 +70,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<map>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
-    s.add_dependency(%q<bundler>, ["~> 1.1.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
   end
 end
 
