@@ -7,7 +7,6 @@ module Stingray
 
       attr_accessor :name, :pool_hash, :pools, :pool, :nodes, :lb_algorithm, :monitors, :note
 
-
       # List all available pools
       def pools
         @pools=get_endpoint("pools").keys
