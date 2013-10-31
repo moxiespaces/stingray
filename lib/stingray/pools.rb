@@ -5,7 +5,7 @@ module Stingray
       
       include Stingray::ServiceInterface
 
-      attr_accessor :name, :pool_hash, :pools, :pool, :nodes, :monitors, :note
+      attr_accessor :name, :pool_hash, :pools, :pool, :nodes, :lb_algorithm, :monitors, :note
 
 
       # List all available pools
@@ -37,6 +37,15 @@ module Stingray
       # set nodes
       def nodes=(node_arr)
         @pool_hash.properties.basic.nodes=node_arr
+      end
+
+      # load balancing algorithm
+      def lb_algorithm
+        @lb_algorithm=@pool_hash.properties.load_balancing.algorithm
+      end
+
+      def lb_algorithm=(lb_algorithm)
+        @lb_algorithm=@pool_hash.properties.load_balancing.algorithm=lb_algorithm
       end
 
       # list monitors for a pool
