@@ -1,11 +1,12 @@
 module Stingray
-   
- 
-    class Pool 
-      
+
+
+    class Pool
+
       include Stingray::ServiceInterface
 
       attr_accessor :name, :pool_hash, :pools, :pool, :nodes, :lb_algorithm, :monitors, :note
+
 
       # List all available pools
       def pools
@@ -16,16 +17,17 @@ module Stingray
       def pool(name)
         begin
           @name=name
-          @pool_hash=get_endpoint("pools/#{@name}") 
-        rescue Stingray::NotFoundError 
+          @pool_hash=get_endpoint("pools/#{@name}")
+        rescue Stingray::NotFoundError
           nil
         end
-      end  
+      end
 
       # Create a new pool
       def create(name)
         @name=name
         @pool_hash=Map.new.set(:properties, :basic, :nodes,[])
+        @pool_hash[:properties].update(:load_balancing=>{:algorithm=>""})
       end
 
       # list the nodes of a pool
@@ -44,7 +46,7 @@ module Stingray
       end
 
       def lb_algorithm=(lb_algorithm)
-        @lb_algorithm=@pool_hash.properties.load_balancing.algorithm=lb_algorithm
+        @pool_hash.properties.load_balancing.algorithm=lb_algorithm
       end
 
       # list monitors for a pool
@@ -80,19 +82,19 @@ module Stingray
         nodes=current_nodes.uniq
       end
 
-      # Delete a pool. 
+      # Delete a pool.
       def destroy
         return false if @name.nil?
         delete_rest "pools/#{@name}"
         true
       end
 
-      # Save the current pool.  
+      # Save the current pool.
       def save
         return false if @pool_hash.nil?
         put_rest "pools/#{@name}", @pool_hash.to_json, :content_type => "application/json"
         true
       end
-    
+
   end
 end
