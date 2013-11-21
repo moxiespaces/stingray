@@ -1,5 +1,5 @@
 module Stingray
-  class Error < Exception
+  class Error < StandardError
     attr_reader :rest_exception
     def initialize(rest_exception)
       super(rest_exception.message)
